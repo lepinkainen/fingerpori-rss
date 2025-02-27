@@ -12,20 +12,20 @@ A simple Go application that fetches Fingerpori comics from Helsingin Sanomat's 
 ## Usage
 
 ```bash
-# Run the application
+# Run the application with default settings (saves to fingerpori.xml in current directory)
 go run main.go
 
-# The RSS feed will be saved to fingerpori.xml
+# Specify an output directory
+go run main.go -outdir /path/to/output/directory
+
+# Build and run the binary
+go build -o fingerpori-rss
+./fingerpori-rss -outdir /path/to/output/directory
 ```
 
-## Requirements
+## Command-line Options
 
-- Go 1.16 or later
-- Internet connection to fetch the comics from HS.fi
-
-## Dependencies
-
-- [github.com/gorilla/feeds](https://github.com/gorilla/feeds) - For RSS feed generation
+- `-outdir`: Directory where the RSS feed XML file will be created (default: current directory)
 
 ## License
 
