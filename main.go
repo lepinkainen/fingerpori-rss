@@ -29,11 +29,11 @@ type FingerporiItem struct {
 		SquareURL    string `json:"squareUrl"`
 		Photographer string `json:"photographer"`
 	} `json:"picture"`
-	PaidType       string                 `json:"paidType"`
-	Category       string                 `json:"category"`
-	SectionTheme   string                 `json:"sectionTheme"`
-	InfoRowContent map[string]interface{} `json:"infoRowContent"`
-	Tags           []string               `json:"tags"`
+	PaidType       string         `json:"paidType"`
+	Category       string         `json:"category"`
+	SectionTheme   string         `json:"sectionTheme"`
+	InfoRowContent map[string]any `json:"infoRowContent"`
+	Tags           []string       `json:"tags"`
 }
 
 func main() {
