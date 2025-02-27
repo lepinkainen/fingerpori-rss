@@ -105,8 +105,8 @@ func main() {
 		feed.Items = append(feed.Items, feedItem)
 	}
 
-	// Generate the RSS feed
-	rss, err := feed.ToRss()
+	// Generate the Atom feed
+	rss, err := feed.ToAtom()
 	if err != nil {
 		log.Fatalf("Error generating RSS: %v", err)
 	}
