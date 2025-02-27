@@ -1,1 +1,4 @@
 fingerpori.xml
+build/
+coverage/
+.task/
