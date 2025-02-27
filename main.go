@@ -2,11 +2,13 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -35,6 +37,10 @@ type FingerporiItem struct {
 }
 
 func main() {
+	// Define command-line flags
+	outDir := flag.String("outdir", ".", "Directory where the RSS feed XML file will be created")
+	flag.Parse()
+
 	// URL to fetch the JSON data from
 	url := "https://www.hs.fi/api/laneitems/39221/list/normal/290"
 
@@ -108,8 +114,16 @@ func main() {
 	// Write the RSS feed to stdout
 	fmt.Println(rss)
 
-	// Optionally, write to a file
-	file, err := os.Create("fingerpori.xml")
+	// Ensure the output directory exists
+	if err := os.MkdirAll(*outDir, 0755); err != nil {
+		log.Fatalf("Error creating output directory: %v", err)
+	}
+
+	// Create the output file path
+	outputPath := filepath.Join(*outDir, "fingerpori.xml")
+
+	// Write to the output file
+	file, err := os.Create(outputPath)
 	if err != nil {
 		log.Fatalf("Error creating file: %v", err)
 	}
@@ -120,5 +134,5 @@ func main() {
 		log.Fatalf("Error writing to file: %v", err)
 	}
 
-	log.Println("RSS feed generated successfully and saved to fingerpori.xml")
+	log.Printf("RSS feed generated successfully and saved to %s", outputPath)
 }
