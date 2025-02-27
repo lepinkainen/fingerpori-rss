@@ -111,9 +111,6 @@ func main() {
 		log.Fatalf("Error generating RSS: %v", err)
 	}
 
-	// Write the RSS feed to stdout
-	fmt.Println(rss)
-
 	// Ensure the output directory exists
 	if err := os.MkdirAll(*outDir, 0755); err != nil {
 		log.Fatalf("Error creating output directory: %v", err)
