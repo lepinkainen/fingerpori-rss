@@ -130,6 +130,4 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error writing to file: %v", err)
 	}
-
-	log.Printf("RSS feed generated successfully and saved to %s", outputPath)
 }
